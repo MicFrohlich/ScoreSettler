@@ -5,5 +5,5 @@ from django.shortcuts import render
 
 # Create your views here.
 def index(request):
-    template = "opinions/index.html"
+    template = "templates/opinions/index.html"
     return render(request,template)
