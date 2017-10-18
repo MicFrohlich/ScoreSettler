@@ -19,5 +19,5 @@ from opinions import views as opinions
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^home/', opinions.index, name="home")
+    url(r'^$', opinions.index, name="home")
 ]
