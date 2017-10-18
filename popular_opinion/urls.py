@@ -21,5 +21,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', opinions.OpinionListView.as_view(), name="home"),
     url(r'^opinion/(?P<opinion_pk>[0-9]+)/',opinions.OpinionDetailView.as_view(),name="opinion_detail"),
+    url(r'^opinion/agree/$', opinions.agreesWith, name="agree"),
+    url(r'^opinion/disagree/$', opinions.disagreesWith, name="disagree"),
+
     # url(r'^opinion/(?P<slug>[-\w]+)/$')
 ]

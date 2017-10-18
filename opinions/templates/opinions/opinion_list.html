@@ -24,11 +24,13 @@
                 <div class="row col-md-6">
                     <div class="col-md-offset-6">
                         <button type="button" id="agree-{{opinion.opinion_pk}}" class="btn btn-success">Agree</button>
+                        <a href="{% url 'agree' opinion.opinion_pk %}">+1</a>
                     </div>
                 </div>
                 <div class="row col-md-6">
                     <div class="col-md-offset-6">
                         <button type="button" id="agree-{{opinion.opinion_pk}}" class="btn btn-danger">Disagree</button>
+                        <a href="{% url 'disagree' opinion.opinion_pk %}">-1</a>
                     </div>
                 </div>
             </div><br><br>
