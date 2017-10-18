@@ -19,5 +19,6 @@ from opinions import views as opinions
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', opinions.index, name="home")
+    url(r'^$', opinions.OpinionListView.as_view(), name="home"),
+    # url(r'^opinion/(?P<slug>[-\w]+)/$')
 ]
