@@ -6,6 +6,6 @@ from opinions.models import Opinion
 
 # Register your models here.
 class OpinionAdmin(admin.ModelAdmin):
-    fields = ['title']
+    fields = ['title','opinion','agrees','disagrees']
 
 admin.site.register(Opinion, OpinionAdmin)

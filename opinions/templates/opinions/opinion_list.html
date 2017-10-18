@@ -8,21 +8,27 @@
                 <div class="row col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title text-center">Opinion Title and metadata</h3>
+                            <h3 class="panel-title text-center">{{opinion.title}}</h3>
                         </div>
                         <div class="panel-body text-center">
-                            {{ opinion.title }}
+                            {{ opinion.opinion }}
+                            {% if opinion.agrees %}
+                                <span class="label label-success">{{opinion.agrees}}</span>
+                            {% endif %}
+                            {% if opinion.disagrees %}
+                                <span class="label label-danger">{{opinion.disagrees}}</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
                 <div class="row col-md-6">
                     <div class="col-md-offset-6">
-                        <button type="button" class="btn btn-success">Agree</button>
+                        <button type="button" id="agree-{{opinion.opinion_pk}}" class="btn btn-success">Agree</button>
                     </div>
                 </div>
                 <div class="row col-md-6">
                     <div class="col-md-offset-6">
-                        <button type="button" class="btn btn-danger">Disagree</button>
+                        <button type="button" id="agree-{{opinion.opinion_pk}}" class="btn btn-danger">Disagree</button>
                     </div>
                 </div>
             </div><br><br>

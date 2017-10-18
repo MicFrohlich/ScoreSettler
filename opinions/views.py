@@ -24,6 +24,12 @@ class OpinionDetailView(DetailView):
         context['now'] = timezone.now()
         return context
 
-def index(request):
-    template = "opinions/opinion_detail.html"
-    return render(request,template)
+def agreesWith(request,opinion_pk):
+    opinion = Opinion.objects.get(pk=opinion_pk)
+    if (opinion):
+        opinion.agrees += 1
+
+def disagreesWith(request,opinion_pk):
+    opinion = Opinion.objects.get(pk=opinion_pk)
+    if (opinion):
+        opinion.disagrees += 1
