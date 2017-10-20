@@ -9,3 +9,7 @@ class Opinion(models.Model):
     opinion = models.CharField(max_length=255,null=True)
     agrees = models.IntegerField(null=True,default=0)
     disagrees = models.IntegerField(null=True,default=0)
+
+class OpinionGroup(models.Model):
+    name = models.CharField(max_length=20)
+    

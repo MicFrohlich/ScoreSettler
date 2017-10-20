@@ -23,6 +23,8 @@ urlpatterns = [
     url(r'^opinion/(?P<opinion_pk>[0-9]+)/',opinions.OpinionDetailView.as_view(),name="opinion_detail"),
     url(r'^opinion/agree/$', opinions.agreesWith, name="agree"),
     url(r'^opinion/disagree/$', opinions.disagreesWith, name="disagree"),
+    url(r'^accounts/', include('registration.backends.hmac.urls')),
+
 
     # url(r'^opinion/(?P<slug>[-\w]+)/$')
 ]
