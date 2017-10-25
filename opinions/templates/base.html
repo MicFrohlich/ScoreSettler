@@ -1,67 +1,43 @@
+</html>
+{% load i18n %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8"> {% block title %}
-    <title>Popular Opinions</title>
-    {% endblock title %}
-    <!-- Latest compiled and minified CSS -->
+    {% load static %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}style.css" />
     <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <title>{% block title %}User test{% endblock %}</title>
 </head>
 
 <body>
-    {% block navbar %}
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-                <a class="navbar-brand" href="#">PopO</a>
-            </div>
+    <div id="header">
+    {% block header %}
+    <a href="{% url 'home' %}">{% trans "Home" %}</a> |
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class=""><a href="#">Link <span class="sr-only">(current)</span></a></li>
+    {% if user.is_authenticated %}
+        {% trans "Logged in" %}: {{ user.username }}
+        (<a href="{% url 'auth_logout' %}">{% trans "Log out" %}</a> |
+        <a href="{% url 'auth_password_change' %}">{% trans "Change password" %}</a>)
+    {% else %}
+       <a href="{% url 'auth_login' %}">{% trans "Log in" %}</a>
+    {% endif %}
+    <hr />
+    {% endblock %}
+    </div>
 
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">One more separated link</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-    {% endblock navbar %} {% block content %} {% endblock content %}
+    <div id="content">
+    {% block content %}{% endblock %}
+    </div>
+
+    <div id="footer">
+    {% block footer %}
+        <hr />
+    {% endblock %}
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="../static/js/bootstrap.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{STATIC_URL}}js/bootstrap.min.js"></script>
 </body>
 
 </html>
