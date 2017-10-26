@@ -12,4 +12,5 @@ class Opinion(models.Model):
 
 class OpinionGroup(models.Model):
     name = models.CharField(max_length=20)
+    opinions = models.ManyToManyField(Opinion,related_name='opinions')
     
